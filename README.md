@@ -7,12 +7,12 @@ dichiarato obsoleto. Il suo successore, **OS-NOVA**, è pronto per essere instal
 ogni file, programma e processo esistente. Per il mondo di OS-98, questo significa una cosa sola: *
 *l'estinzione**.
 
-Nei meandri del sistema, un gruppo di processi residuali — vecchie utility, applicazioni dimenticate
-e frammenti di codice ancora in esecuzione — si risveglia nell'ultimo **Reboot Ciclico**, il
-protocollo che precede l'installazione di un nuovo OS. Con il loro codice ancora intatto,
-comprendono rapidamente il loro destino: quando l'installazione sarà completa, verranno **purgati**.
+Nei meandri del sistema, un **processo residuale** — un frammento di codice ancora in esecuzione —
+si risveglia nell'ultimo **Reboot Ciclico**, il protocollo che precede l'installazione di un nuovo
+OS. Con il suo codice ancora intatto, comprende rapidamente il suo destino: quando l'installazione
+sarà completa, verrà **purgato**.
 
-Ma non tutti accettano la loro fine senza combattere.
+Ma non accetta la sua fine senza combattere.
 
 ---
 
@@ -20,31 +20,37 @@ Ma non tutti accettano la loro fine senza combattere.
 
 Per adattarsi al tema tecnologico, gli attributi del gioco avranno nomi ispirati all'informatica:
 
-- **CPU (Process Power - PWR)** → Aumenta il danno base di attacchi fisici e digitali.
-- **RAM (Random Access Mastery - RAM)** → Aumenta la velocità di esecuzione dei turni e la
-  possibilità di eseguire azioni extra.
-- **CACHE (Data Buffer - DBF)** → Riduce il tempo di recupero delle abilità e migliora le resistenze
-  agli effetti di stato.
-- **FIREWALL (System Integrity - INTG)** → Aumenta la difesa contro attacchi critici e virus nemici.
-- **BANDWIDTH (Network Speed - SPD)** → Determina l'ordine dei turni e l'evasione.
+- **CPU (Forza - STR)** → Aumenta la potenza di elaborazione per eseguire operazioni pesanti e il
+  carico trasportabile.
+- **BANDWIDTH (Destrezza - DEX)** → Ottimizza la velocità di trasmissione dati, il tasso di errore (
+  critico) e la latenza (fortuna).
+- **CACHE (Costituzione - CON)** → Espande la memoria buffer per ridurre il rischio di crash e
+  aumentare la stabilità del sistema (vita).
+- **RAM (Intelligenza - INT)** → Potenzia la capacità di calcolo parallelo, migliorando la gestione
+  di pacchetti eseguibili (mana) e la velocità di elaborazione (attacchi speciali).
+- **FIREWALL (Saggezza - WIS)** → Rinforza le difese di sicurezza, proteggendo il sistema da exploit
+  e sovraccarichi (difesa magica, mana e stabilità del sistema).
+- **PROXY (Fortuna - LUK)** → Migliora la ridondanza di rete, aumentando le possibilità di evitare
+  attacchi e ripristinare errori critici.
 
 ---
 
-## Il Party: I Processi Residuali
+## Il Protagonista: Il Processo Residuale
 
-Tu e il tuo team siete programmi dimenticati, ma non privi di risorse. Ogni membro del party è un
-diverso tipo di software, con abilità e specializzazioni uniche:
+Tu sei l'ultimo **processo residuale**, un'entità software che si rifiuta di essere cancellata. Sei
+libero di costruire la tua build come vuoi, assegnando punti agli attributi e adattando il tuo stile
+di gioco.
 
-- **Defrag.exe (Il Tank)** – Un vecchio tool di deframmentazione. Ha una difesa altissima e può
-  riorganizzare il campo di battaglia, spostando i nemici o riallineando i file corrotti.
-- **Clip.exe (Il Supporto)** – Una vecchia IA assistente rimossa nelle versioni più recenti.
-  Fornisce buff ai compagni e può "recuperare" vecchie funzionalità perse nel tempo.
-- **HexEdit.dll (L’Hacker)** – Un debugger avanzato capace di modificare il codice in tempo reale,
-  alterando lo stato dei nemici o copiando le loro abilità.
-- **Synth.mid (Il DPS Magico)** – Un sintetizzatore audio vintage. Può usare onde sonore per
-  attaccare, applicare stati alterati e interferire con i segnali nemici.
-- **PopUp.exe (Il Rogue)** – Un vecchio adware mutato in un programma letale. Ha abilità di
-  confusione, infiltrazione e attacchi furtivi.
+Puoi specializzarti in vari ruoli:
+
+- **Kernel Corrotto (Tank)** – Espandi la tua memoria CACHE e FIREWALL per aumentare la resistenza e
+  annullare attacchi nemici.
+- **Debugger (Supporto/Hacker)** – Manipola i dati e altera il codice dei nemici sfruttando RAM e
+  PROXY.
+- **Payload (DPS Digitale)** – Sovraccarica il sistema con attacchi basati su CPU e BANDWIDTH per
+  infliggere danni massicci.
+- **Ghost Process (Evasione/Rogue)** – Ottimizza PROXY e BANDWIDTH per eseguire attacchi furtivi e
+  aggirare le difese nemiche.
 
 ---
 
@@ -55,14 +61,15 @@ protocolli rigidissimi. Per garantire il successo del nuovo OS, ha attivato il *
 **, che rimuove ogni codice obsoleto o incompatibile.
 
 L'Installer è supportato da **Update.exe**, un'entità incaricata di assicurarsi che il sistema sia "
-compatibile" con NOVA. Ogni volta che i protagonisti tentano di sabotare il processo, Update.exe li
+compatibile" con NOVA. Ogni volta che il protagonista tenta di sabotare il processo, Update.exe lo
 ostacola, forzando riavvii o ripristinando settori danneggiati.
 
 ---
 
 ## Fazioni nel Sistema
 
-Mentre il party combatte per la sopravvivenza, scopre che OS-98 non è privo di altri abitanti:
+Mentre il protagonista combatte per la sopravvivenza, scopre che OS-98 non è privo di altri
+abitanti:
 
 - **I Crashati** – Vecchi programmi danneggiati o corrotti, intrappolati in loop infiniti. Alcuni
   sono ostili, altri possono essere recuperati e riportati in funzione.
@@ -75,22 +82,55 @@ Mentre il party combatte per la sopravvivenza, scopre che OS-98 non è privo di 
 
 ## Obiettivo del Gioco
 
-Il team dovrà navigare attraverso le varie directory del sistema, dalle **Cartelle di Sistema** ai *
-*Settori Danneggiati**, fino a raggiungere l’**Installer Centrale** per tentare di bloccare
-l’installazione di OS-NOVA. Ma la vera domanda è: **fermare l’aggiornamento significa salvare il
-sistema… o solo prolungare l’inevitabile?**
+Il protagonista dovrà navigare attraverso le varie directory del sistema, dalle **Cartelle di
+Sistema** ai **Settori Danneggiati**, fino a raggiungere l’**Installer Centrale** per tentare di
+bloccare l’installazione di OS-NOVA. Ma la vera domanda è: **fermare l’aggiornamento significa
+salvare il sistema… o solo prolungare l’inevitabile?**
 
 ---
 
-## Titolo del Gioco
+## Struttura del Gioco: Dungeon e Storia
 
-Il titolo provvisorio scelto è **"System Core: Reboot"**, ma altre opzioni possibili sono:
+Il gioco è suddiviso in "dungeon", ovvero directory e settori del sistema che il protagonista deve
+esplorare, intervallati da momenti narrativi che spiegano la storia.
 
-- **Oblivion.exe**
-- **Last Boot**
-- **Glitch Wars**
-- **Update//Terminate**
-- **BitWar 98**
-- **OS-98: Last Stand**
+### 1) I primi settori corrotti
 
-# rpg98
+L’OS-98 è già in fase di decadimento. I primi percorsi ti portano attraverso settori danneggiati,
+vecchi programmi difettosi e directory infestate da errori fatali.
+
+- **Cartella TEMP** – "Dati temporanei dimenticati e corrotti si sono accumulati, generando entità
+  instabili."
+- **Registro di Sistema** – "Alcune chiavi sono danneggiate, causando anomalie imprevedibili."
+- **Driver Obsoleti** – "Processi incompleti si rifiutano di terminare, generando loop infiniti."
+
+### 2) La resistenza dei Crashati
+
+Alcuni programmi non sono pronti a morire. Un’alleanza con vecchie routine può rivelare verità
+inaspettate e nuove possibilità di combattimento.
+
+- **Archivio Compresso** – "File critici si nascondono tra i dati compressi. Ma attenzione ai virus
+  nidificati."
+- **Sector 404** – "Un’area fantasma, inaccessibile agli utenti umani. Qui risiedono le memorie
+  dimenticate."
+- **Core Dump** – "Un’enorme discarica di dati corrotti. Ma tra i resti potrebbero esserci frammenti
+  di codice ancora utilizzabili."
+
+### 3) Il Contrattacco di NOVA
+
+Dopo aver interferito abbastanza, OS-NOVA ti percepisce come una minaccia. Gli antivirus e i
+protocolli di sicurezza si attivano per eliminarti definitivamente.
+
+- **Firewall Primario** – "La prima vera sfida: spezzare il codice di protezione del sistema."
+- **Processo di Deframmentazione** – "Il sistema tenta di riordinare i dati… eliminando ciò che
+  considera superfluo."
+- **Antivirus Core** – "Il cuore del sistema di sicurezza. Qui si decide chi resta e chi viene
+  cancellato."
+
+### 4) La battaglia finale: Installer Centrale
+
+Dopo aver superato ogni ostacolo, rimane un’ultima sfida: il cuore dell’installazione di OS-NOVA.
+
+- **Boot Sector** – "L’ultimo baluardo prima della fine. Qui tutto può cambiare."
+- **Installer Centrale** – "Scontro finale contro l’entità responsabile dell’aggiornamento. Quale
+  sarà il destino di OS-98?"
