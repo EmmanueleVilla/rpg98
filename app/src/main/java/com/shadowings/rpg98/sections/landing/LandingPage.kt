@@ -39,7 +39,7 @@ fun LandingPage(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .padding(size * 2),
+                    .padding(horizontal = size * 2),
                 title = "Personaggio"
             ) {
                 Row {
@@ -54,7 +54,7 @@ fun LandingPage(modifier: Modifier = Modifier) {
                     Column(
                         Modifier.weight(2.0f)
                     ) {
-                        
+
                     }
                 }
             }

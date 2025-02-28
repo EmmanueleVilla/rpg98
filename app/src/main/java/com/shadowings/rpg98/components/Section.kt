@@ -129,8 +129,7 @@ fun Section(
 
             Box(
                 modifier = Modifier
-                    .padding(8.dp + size)
-                    .padding(top = 6.dp)
+                    .padding(8.dp + 6.dp + size)
             ) {
                 content()
             }
