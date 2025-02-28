@@ -1,10 +1,8 @@
 package com.shadowings.rpg98.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,7 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -25,15 +27,13 @@ import com.shadowings.rpg98.R
 @Composable
 fun SectionPreview(modifier: Modifier = Modifier) {
     Section(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp),
+        modifier = Modifier,
         title = "Personaggio"
     ) {
         Box(
             Modifier
                 .fillMaxWidth()
-                .height(100.dp)
+                .height(200.dp)
                 .background(color = Color(0xFF018083))
         ) {
 
@@ -47,39 +47,94 @@ fun Section(
     title: String = "",
     content: @Composable BoxScope.() -> Unit
 ) {
+    val background = Color(0xFFBFBFBF)
+    val grey = Color(0xFF808080)
+    val sizePx = with(LocalDensity.current) { size.toPx() }
     val fontFamily =
         FontFamily(
             Font(
                 R.font.windows
             )
         )
+
     Box(
         modifier = modifier
-            .background(color = Color(0xFFBFBFBF))
-            .padding(start = size, top = size)
+            .background(color = background)
     ) {
         Box(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = modifier
+                .background(color = background)
+                .padding(8.dp)
                 .padding(top = 6.dp)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp)
-                    .border(size, Color.White)
-            )
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(
-                        top = 8.dp - size,
-                        start = 8.dp - size,
-                        end = 8.dp + size,
-                        bottom = 8.dp + size
+                .drawWithContent {
+                    drawContent()
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.White,
+                        start = Offset(sizePx, sizePx),
+                        end = Offset(sizePx, size.height),
+                        strokeWidth = sizePx,
                     )
-                    .border(size, Color(0xFF808080))
-            )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.White,
+                        start = Offset(size.width, sizePx),
+                        end = Offset(size.width, size.height),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.White,
+                        start = Offset(sizePx, sizePx),
+                        end = Offset(size.width, sizePx),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.White,
+                        start = Offset(sizePx, size.height),
+                        end = Offset(size.width, size.height),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = grey,
+                        start = Offset(0f, 0f),
+                        end = Offset(0f, size.height - sizePx),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = grey,
+                        start = Offset(0f, 0f),
+                        end = Offset(size.width - sizePx, 0f),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = grey,
+                        start = Offset(0f, size.height - sizePx),
+                        end = Offset(size.width - sizePx, size.height - sizePx),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = grey,
+                        start = Offset(size.width - sizePx, 0f),
+                        end = Offset(size.width - sizePx, size.height - sizePx),
+                        strokeWidth = sizePx,
+                    )
+                }
+        ) {
+
+            Box(
+                modifier = Modifier
+                    .padding(8.dp + size)
+                    .padding(top = 6.dp)
+            ) {
+                content()
+            }
+
         }
         Box(
             modifier = Modifier
@@ -97,16 +152,6 @@ fun Section(
                 fontFamily = fontFamily
             )
         }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(
-                    start = 8.dp + size + 8.dp,
-                    top = 8.dp + size + 12.dp + 8.dp,
-                    end = 8.dp + size * 2 + 8.dp,
-                )
-        ) {
-            content()
-        }
     }
+
 }
