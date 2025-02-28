@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.shadowings.rpg98.R
 import com.shadowings.rpg98.components.Loading
 import com.shadowings.rpg98.components.Section
@@ -111,6 +113,55 @@ fun LandingPage(modifier: Modifier = Modifier) {
                             text = "120/250 xp",
                             style = MaterialTheme.typography.bodyLarge,
                             textAlign = TextAlign.Center,
+                            fontFamily = fontFamily
+                        )
+                    }
+                }
+            }
+            Section(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(horizontal = size * 2),
+                title = "Stage I"
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Boot Sector Corrotto:",
+                        color = Color.Black,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(4.dp),
+                        fontFamily = fontFamily
+                    )
+                    Text(
+                        text = "Il sistema operativo sta tentando di eseguire un avvio pulito, ma un errore critico ha interrotto il processo. Difenditi dai protocolli di ripristino automatico!",
+                        color = Color.Black,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        fontFamily = fontFamily
+                    )
+                    Spacer(Modifier.size(4.dp))
+                    Window(
+                        Modifier
+                            .height(48.dp)
+                            .padding(4.dp)
+                    ) {
+                        Text(
+                            text = "Combatti!",
+                            color = Color.Black,
+                            fontSize = 24.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .align(Alignment.Center),
                             fontFamily = fontFamily
                         )
                     }

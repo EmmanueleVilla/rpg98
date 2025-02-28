@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.shadowings.rpg98.components.WindowPreview
+import com.shadowings.rpg98.sections.landing.LandingPage
 import com.shadowings.rpg98.ui.theme.Rpg98Theme
 
 class MainActivity : ComponentActivity() {
@@ -21,9 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Rpg98Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    WindowPreview(
-                        Modifier.padding(innerPadding)
-                    )
+                    LandingPage(Modifier.padding(innerPadding))
                 }
             }
         }
