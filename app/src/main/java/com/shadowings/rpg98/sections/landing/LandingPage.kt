@@ -1,7 +1,9 @@
 package com.shadowings.rpg98.sections.landing
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,6 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.FilterQuality
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -73,35 +78,36 @@ fun LandingPage(modifier: Modifier = Modifier) {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+                        Image(
+                            modifier = Modifier
+                                .fillMaxWidth(0.5f)
+                                .aspectRatio(1.0f),
+                            filterQuality = FilterQuality.None,
+                            bitmap = ImageBitmap.imageResource(R.drawable.avatar),
+                            contentDescription = "Avatar"
+                        )
+                        Spacer(Modifier.size(4.dp))
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "LVL",
-                            style = MaterialTheme.typography.bodyLarge,
+                            text = "lvl 2",
+                            style = MaterialTheme.typography.headlineSmall,
                             textAlign = TextAlign.Center,
                             fontFamily = fontFamily
                         )
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "2",
-                            style = MaterialTheme.typography.headlineLarge,
-                            textAlign = TextAlign.Center,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = fontFamily
-                        )
+
                     }
                     Column(
                         Modifier.weight(2.0f),
-                        verticalArrangement = Arrangement.Center
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Angelicaah",
+                            text = "r4m.exe",
                             style = MaterialTheme.typography.headlineMedium,
-                            textAlign = TextAlign.Center,
+                            textAlign = TextAlign.Left,
                             fontWeight = FontWeight.Bold,
                             fontFamily = fontFamily
                         )
-                        Spacer(Modifier.height(12.dp))
                         Loading(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -110,14 +116,15 @@ fun LandingPage(modifier: Modifier = Modifier) {
                         )
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "120/250 xp",
+                            text = "120 Exp Rimanente",
                             style = MaterialTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Center,
+                            textAlign = TextAlign.Left,
                             fontFamily = fontFamily
                         )
                     }
                 }
             }
+            Spacer(Modifier.size(16.dp))
             Section(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -165,6 +172,87 @@ fun LandingPage(modifier: Modifier = Modifier) {
                             fontFamily = fontFamily
                         )
                     }
+                }
+            }
+            Spacer(Modifier.size(16.dp))
+            Box(
+                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+            ) {
+                Window(
+                    Modifier
+                        .height(48.dp)
+                        .padding(4.dp)
+                ) {
+                    Text(
+                        text = "Sistema",
+                        color = Color.Black,
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.Center),
+                        fontFamily = fontFamily
+                    )
+                }
+            }
+            Box(
+                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+            ) {
+                Window(
+                    Modifier
+                        .height(48.dp)
+                        .padding(4.dp)
+                ) {
+                    Text(
+                        text = "Risorse",
+                        color = Color.Black,
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.Center),
+                        fontFamily = fontFamily
+                    )
+                }
+            }
+            Box(
+                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+            ) {
+                Window(
+                    Modifier
+                        .height(48.dp)
+                        .padding(4.dp)
+                ) {
+                    Text(
+                        text = "Scansione",
+                        color = Color.Black,
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.Center),
+                        fontFamily = fontFamily
+                    )
+                }
+            }
+            Box(
+                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+            ) {
+                Window(
+                    Modifier
+                        .height(48.dp)
+                        .padding(4.dp)
+                ) {
+                    Text(
+                        text = "Cronologia",
+                        color = Color.Black,
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.Center),
+                        fontFamily = fontFamily
+                    )
                 }
             }
         }
