@@ -1,6 +1,7 @@
 package com.shadowings.rpg98.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,6 +20,7 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -58,6 +60,7 @@ fun RpgButtonPreview() {
 @Composable
 fun RpgButton(
     modifier: Modifier = Modifier,
+    text: String = "",
     pressed: Boolean = false
 ) {
     val isPressed = remember { mutableStateOf(pressed) }
@@ -80,6 +83,21 @@ fun RpgButton(
 
     Box(
         modifier = modifier
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onPress = {
+                        isPressed.value = true
+                        try {
+                            awaitRelease()
+                        } catch (e: Exception) {
+                            isPressed.value = false
+                        }
+                    },
+                    onTap = {
+                        isPressed.value = false
+                    }
+                )
+            }
             .background(
                 color = if (isPressed.value) {
                     Color.Black
@@ -153,7 +171,7 @@ fun RpgButton(
         )
         {
             Text(
-                text = "Combatti!",
+                text = text,
                 color = Color.Black,
                 fontSize = if (isPressed.value) {
                     20.sp

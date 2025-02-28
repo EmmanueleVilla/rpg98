@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shadowings.rpg98.R
 import com.shadowings.rpg98.components.Loading
+import com.shadowings.rpg98.components.RpgButton
 import com.shadowings.rpg98.components.Section
 import com.shadowings.rpg98.components.TopBar
 import com.shadowings.rpg98.components.Window
@@ -77,7 +78,7 @@ fun LandingPage(
                         .fillMaxWidth()
                         .wrapContentHeight()
                         .padding(horizontal = size * 2),
-                    title = "Personaggio"
+                    title = "Informazioni"
                 ) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(size * 4),
@@ -173,104 +174,40 @@ fun LandingPage(
                             fontFamily = fontFamily
                         )
                         Spacer(Modifier.size(4.dp))
-                        Window(
-                            Modifier
-                                .height(48.dp)
-                                .padding(4.dp)
-                        ) {
-                            Text(
-                                text = "Combatti!",
-                                color = Color.Black,
-                                fontSize = 24.sp,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .align(Alignment.Center),
-                                fontFamily = fontFamily
-                            )
-                        }
+                        RpgButton(
+                            modifier = Modifier
+                                .height(48.dp),
+                            text = "Combatti"
+                        )
                     }
                 }
                 Spacer(Modifier.size(16.dp))
-                Box(
-                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Window(
+                    RpgButton(
                         Modifier
-                            .height(48.dp)
-                            .padding(4.dp)
-                    ) {
-                        Text(
-                            text = "Sistema",
-                            color = Color.Black,
-                            fontSize = 24.sp,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.Center),
-                            fontFamily = fontFamily
-                        )
-                    }
-                }
-                Box(
-                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-                ) {
-                    Window(
+                            .height(48.dp),
+                        text = "Sistema"
+                    )
+                    RpgButton(
+                        modifier = Modifier
+                            .height(48.dp),
+                        text = "Risorse"
+                    )
+                    RpgButton(
                         Modifier
-                            .height(48.dp)
-                            .padding(4.dp)
-                    ) {
-                        Text(
-                            text = "Risorse",
-                            color = Color.Black,
-                            fontSize = 24.sp,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.Center),
-                            fontFamily = fontFamily
-                        )
-                    }
-                }
-                Box(
-                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-                ) {
-                    Window(
+                            .height(48.dp),
+                        text = "Scansione"
+                    )
+                    RpgButton(
                         Modifier
-                            .height(48.dp)
-                            .padding(4.dp)
-                    ) {
-                        Text(
-                            text = "Scansione",
-                            color = Color.Black,
-                            fontSize = 24.sp,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.Center),
-                            fontFamily = fontFamily
-                        )
-                    }
-                }
-                Box(
-                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-                ) {
-                    Window(
-                        Modifier
-                            .height(48.dp)
-                            .padding(4.dp)
-                    ) {
-                        Text(
-                            text = "Cronologia",
-                            color = Color.Black,
-                            fontSize = 24.sp,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.Center),
-                            fontFamily = fontFamily
-                        )
-                    }
+                            .height(48.dp),
+                        text = "Cronologia"
+                    )
                 }
             }
         }

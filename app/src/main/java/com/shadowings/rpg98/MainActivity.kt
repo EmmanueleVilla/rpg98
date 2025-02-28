@@ -21,12 +21,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.light(
-                Color.GREEN,
+            statusBarStyle = SystemBarStyle.dark(
                 Color.GREEN
             ),
-            navigationBarStyle = SystemBarStyle.light(
-                Color.GREEN,
+            navigationBarStyle = SystemBarStyle.dark(
                 Color.GREEN
             )
         )

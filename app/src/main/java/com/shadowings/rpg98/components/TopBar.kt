@@ -16,8 +16,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -72,24 +70,13 @@ fun TopBar(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Window(
-                Modifier
+            RpgButton(
+                modifier = Modifier
                     .width(48.dp)
                     .height(48.dp)
-                    .padding(4.dp)
-            ) {
-                Text(
-                    text = "?",
-                    color = Color.Black,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.Center),
-                    fontFamily = fontFamily
-                )
-            }
+                    .padding(4.dp),
+                text = "?"
+            )
         }
     }
 }
