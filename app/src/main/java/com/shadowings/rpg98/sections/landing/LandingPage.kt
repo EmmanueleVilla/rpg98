@@ -36,133 +36,172 @@ import com.shadowings.rpg98.components.Section
 import com.shadowings.rpg98.components.TopBar
 import com.shadowings.rpg98.components.Window
 import com.shadowings.rpg98.components.size
+import com.shadowings.rpg98.utils.PreviewContainer
+import org.koin.androidx.compose.koinViewModel
 
 @Preview
 @Composable
 fun LandingPagePreview() {
-    LandingPage()
+    PreviewContainer {
+        LandingPage()
+    }
 }
 
 @Composable
-fun LandingPage(modifier: Modifier = Modifier) {
+fun LandingPage(
+    modifier: Modifier = Modifier,
+    viewModel: LandingPageVM = koinViewModel()
+) {
     val fontFamily =
         FontFamily(
             Font(
                 R.font.windows
             )
         )
-    Window(
-        modifier.fillMaxSize()
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color(0xFF018083))
+            .padding(size * 2)
     ) {
-        Column(
-            Modifier.fillMaxSize()
+        Window(
+            modifier.fillMaxSize()
         ) {
-            TopBar()
-
-            Section(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(horizontal = size * 2),
-                title = "Personaggio"
+            Column(
+                Modifier.fillMaxSize()
             ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(size * 4),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column(
-                        Modifier
-                            .weight(1.0f)
-                            .aspectRatio(1.0f)
-                            .background(color = Color(0xFF018083)),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Image(
-                            modifier = Modifier
-                                .fillMaxWidth(0.5f)
-                                .aspectRatio(1.0f),
-                            filterQuality = FilterQuality.None,
-                            bitmap = ImageBitmap.imageResource(R.drawable.avatar),
-                            contentDescription = "Avatar"
-                        )
-                        Spacer(Modifier.size(4.dp))
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "lvl 2",
-                            style = MaterialTheme.typography.headlineSmall,
-                            textAlign = TextAlign.Center,
-                            fontFamily = fontFamily
-                        )
+                TopBar()
 
-                    }
-                    Column(
-                        Modifier.weight(2.0f),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                Section(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(horizontal = size * 2),
+                    title = "Personaggio"
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(size * 4),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "r4m.exe",
-                            style = MaterialTheme.typography.headlineMedium,
-                            textAlign = TextAlign.Left,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = fontFamily
-                        )
-                        Loading(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(32.dp),
-                            progress = 0.75f
-                        )
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "120 Exp Rimanente",
-                            style = MaterialTheme.typography.bodyLarge,
-                            textAlign = TextAlign.Left,
-                            fontFamily = fontFamily
-                        )
+                        Column(
+                            Modifier
+                                .weight(1.0f)
+                                .aspectRatio(1.0f),
+                            verticalArrangement = Arrangement.SpaceBetween,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Image(
+                                modifier = Modifier
+                                    .fillMaxWidth(0.75f)
+                                    .aspectRatio(1.0f),
+                                filterQuality = FilterQuality.None,
+                                bitmap = ImageBitmap.imageResource(R.drawable.avatar),
+                                contentDescription = "Avatar"
+                            )
+                            Spacer(Modifier.size(4.dp))
+                            Text(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "Livello 2",
+                                style = MaterialTheme.typography.bodyLarge,
+                                textAlign = TextAlign.Center,
+                                fontFamily = fontFamily,
+                                color = Color.Black,
+                            )
+
+                        }
+                        Column(
+                            Modifier
+                                .weight(2.0f)
+                                .aspectRatio(2f),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Text(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "r4m.exe",
+                                style = MaterialTheme.typography.headlineMedium,
+                                textAlign = TextAlign.Left,
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = fontFamily
+                            )
+                            Loading(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(32.dp),
+                                progress = 0.75f
+                            )
+                            Text(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = "120 Exp Rimanente",
+                                style = MaterialTheme.typography.bodyLarge,
+                                textAlign = TextAlign.Left,
+                                fontFamily = fontFamily,
+                                color = Color.Black,
+                            )
+                        }
                     }
                 }
-            }
-            Spacer(Modifier.size(16.dp))
-            Section(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(horizontal = size * 2),
-                title = "Stage I"
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
+                Spacer(Modifier.size(16.dp))
+                Section(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(horizontal = size * 2),
+                    title = "Stage I"
                 ) {
-                    Text(
-                        text = "Boot Sector Corrotto:",
-                        color = Color.Black,
-                        fontSize = 20.sp,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(4.dp),
-                        fontFamily = fontFamily
-                    )
-                    Text(
-                        text = "Il sistema operativo sta tentando di eseguire un avvio pulito, ma un errore critico ha interrotto il processo. Difenditi dai protocolli di ripristino automatico!",
-                        color = Color.Black,
-                        fontSize = 20.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        fontFamily = fontFamily
-                    )
-                    Spacer(Modifier.size(4.dp))
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "Boot Sector Corrotto:",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            textAlign = TextAlign.Center,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(4.dp),
+                            fontFamily = fontFamily
+                        )
+                        Text(
+                            text = "Il sistema operativo sta tentando di eseguire un avvio pulito, ma un errore critico ha interrotto il processo. Difenditi dai protocolli di ripristino automatico!",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            fontFamily = fontFamily
+                        )
+                        Spacer(Modifier.size(4.dp))
+                        Window(
+                            Modifier
+                                .height(48.dp)
+                                .padding(4.dp)
+                        ) {
+                            Text(
+                                text = "Combatti!",
+                                color = Color.Black,
+                                fontSize = 24.sp,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .align(Alignment.Center),
+                                fontFamily = fontFamily
+                            )
+                        }
+                    }
+                }
+                Spacer(Modifier.size(16.dp))
+                Box(
+                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+                ) {
                     Window(
                         Modifier
                             .height(48.dp)
                             .padding(4.dp)
                     ) {
                         Text(
-                            text = "Combatti!",
+                            text = "Sistema",
                             color = Color.Black,
                             fontSize = 24.sp,
                             textAlign = TextAlign.Center,
@@ -173,86 +212,65 @@ fun LandingPage(modifier: Modifier = Modifier) {
                         )
                     }
                 }
-            }
-            Spacer(Modifier.size(16.dp))
-            Box(
-                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-            ) {
-                Window(
-                    Modifier
-                        .height(48.dp)
-                        .padding(4.dp)
+                Box(
+                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
                 ) {
-                    Text(
-                        text = "Sistema",
-                        color = Color.Black,
-                        fontSize = 24.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.Center),
-                        fontFamily = fontFamily
-                    )
+                    Window(
+                        Modifier
+                            .height(48.dp)
+                            .padding(4.dp)
+                    ) {
+                        Text(
+                            text = "Risorse",
+                            color = Color.Black,
+                            fontSize = 24.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .align(Alignment.Center),
+                            fontFamily = fontFamily
+                        )
+                    }
                 }
-            }
-            Box(
-                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-            ) {
-                Window(
-                    Modifier
-                        .height(48.dp)
-                        .padding(4.dp)
+                Box(
+                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
                 ) {
-                    Text(
-                        text = "Risorse",
-                        color = Color.Black,
-                        fontSize = 24.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.Center),
-                        fontFamily = fontFamily
-                    )
+                    Window(
+                        Modifier
+                            .height(48.dp)
+                            .padding(4.dp)
+                    ) {
+                        Text(
+                            text = "Scansione",
+                            color = Color.Black,
+                            fontSize = 24.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .align(Alignment.Center),
+                            fontFamily = fontFamily
+                        )
+                    }
                 }
-            }
-            Box(
-                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-            ) {
-                Window(
-                    Modifier
-                        .height(48.dp)
-                        .padding(4.dp)
+                Box(
+                    Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
                 ) {
-                    Text(
-                        text = "Scansione",
-                        color = Color.Black,
-                        fontSize = 24.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.Center),
-                        fontFamily = fontFamily
-                    )
-                }
-            }
-            Box(
-                Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-            ) {
-                Window(
-                    Modifier
-                        .height(48.dp)
-                        .padding(4.dp)
-                ) {
-                    Text(
-                        text = "Cronologia",
-                        color = Color.Black,
-                        fontSize = 24.sp,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.Center),
-                        fontFamily = fontFamily
-                    )
+                    Window(
+                        Modifier
+                            .height(48.dp)
+                            .padding(4.dp)
+                    ) {
+                        Text(
+                            text = "Cronologia",
+                            color = Color.Black,
+                            fontSize = 24.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .align(Alignment.Center),
+                            fontFamily = fontFamily
+                        )
+                    }
                 }
             }
         }
