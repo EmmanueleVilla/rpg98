@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,7 +36,7 @@ fun WindowPreview(modifier: Modifier = Modifier) {
         Modifier
             .width(48.dp)
             .height(48.dp)
-            .padding(4.dp)
+            .background(color = Color.Black)
     ) {
         Text(
             text = "?",
