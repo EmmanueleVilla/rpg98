@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shadowings.rpg98.R
+import com.shadowings.rpg98.components.IconMenu
 import com.shadowings.rpg98.components.Loading
 import com.shadowings.rpg98.components.RpgButton
 import com.shadowings.rpg98.components.Section
@@ -102,7 +103,7 @@ fun LandingPage(
                             Spacer(Modifier.size(4.dp))
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
-                                text = "Livello 2",
+                                text = "IdleProcess",
                                 style = MaterialTheme.typography.bodyLarge,
                                 textAlign = TextAlign.Center,
                                 fontFamily = fontFamily,
@@ -114,12 +115,12 @@ fun LandingPage(
                             Modifier
                                 .weight(2.0f)
                                 .aspectRatio(2f),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                            verticalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
-                                text = "r4m.exe",
-                                style = MaterialTheme.typography.headlineMedium,
+                                text = "Livello 2",
+                                style = MaterialTheme.typography.headlineSmall,
                                 textAlign = TextAlign.Left,
                                 color = Color.Black,
                                 fontWeight = FontWeight.Bold,
@@ -148,13 +149,13 @@ fun LandingPage(
                         .fillMaxWidth()
                         .wrapContentHeight()
                         .padding(horizontal = size * 2),
-                    title = "Stage I"
+                    title = "Stage 0"
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "Boot Sector Corrotto:",
+                            text = "Benvenuto in OS-98:",
                             color = Color.Black,
                             fontSize = 20.sp,
                             textAlign = TextAlign.Center,
@@ -165,50 +166,94 @@ fun LandingPage(
                             fontFamily = fontFamily
                         )
                         Text(
-                            text = "Il sistema operativo sta tentando di eseguire un avvio pulito, ma un errore critico ha interrotto il processo. Difenditi dai protocolli di ripristino automatico!",
+                            text = "Un tempo stabile e organizzato, ora è frammentato da conflitti tra processi, routine e vecchi script che lottano per sopravvivere. Tu sei un Processo Residuale, un codice dimenticato che si rifiuta di essere terminato.",
                             color = Color.Black,
                             fontSize = 20.sp,
                             textAlign = TextAlign.Center,
                             modifier = Modifier
-                                .fillMaxWidth(),
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp),
                             fontFamily = fontFamily
                         )
                         Spacer(Modifier.size(4.dp))
                         RpgButton(
                             modifier = Modifier
                                 .height(48.dp),
-                            text = "Combatti"
+                            text = "Ok"
                         )
                     }
                 }
                 Spacer(Modifier.size(16.dp))
+
                 Column(
                     Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    RpgButton(
-                        Modifier
-                            .height(48.dp),
-                        text = "Sistema"
-                    )
-                    RpgButton(
-                        modifier = Modifier
-                            .height(48.dp),
-                        text = "Risorse"
-                    )
-                    RpgButton(
-                        Modifier
-                            .height(48.dp),
-                        text = "Scansione"
-                    )
-                    RpgButton(
-                        Modifier
-                            .height(48.dp),
-                        text = "Cronologia"
-                    )
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceAround
+                    ) {
+                        IconMenu(
+                            modifier = Modifier.fillMaxWidth(0.5f),
+                            text = "Sistema",
+                            image = R.drawable.menu_system
+                        )
+                        IconMenu(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Risorse",
+                            image = R.drawable.menu_resources
+                        )
+                    }
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceAround
+                    ) {
+                        IconMenu(
+                            modifier = Modifier.fillMaxWidth(0.5f),
+                            text = "Scansione",
+                            image = R.drawable.menu_scan
+                        )
+                        IconMenu(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Cronologia",
+                            image = R.drawable.menu_history
+                        )
+                    }
                 }
+                /*
+                                Column(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                                ) {
+                                    RpgButton(
+                                        Modifier
+                                            .height(48.dp),
+                                        text = "Sistema"
+                                    )
+                                    RpgButton(
+                                        modifier = Modifier
+                                            .height(48.dp),
+                                        text = "Risorse"
+                                    )
+                                    RpgButton(
+                                        Modifier
+                                            .height(48.dp),
+                                        text = "Scansione"
+                                    )
+                                    RpgButton(
+                                        Modifier
+                                            .height(48.dp),
+                                        text = "Cronologia"
+                                    )
+                                }
+
+                 */
             }
         }
     }
