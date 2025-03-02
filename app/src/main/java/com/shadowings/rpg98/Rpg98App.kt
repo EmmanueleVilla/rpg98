@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.shadowings.rpg98.db.AppDatabase
+import com.shadowings.rpg98.section.system.SystemPageVM
 import com.shadowings.rpg98.sections.landing.LandingPageVM
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -34,6 +35,7 @@ val appModule = module {
         provideAppDatabase(get())
     }
     viewModelOf(::LandingPageVM)
+    viewModelOf(::SystemPageVM)
 }
 
 class Rpg98App : Application() {
