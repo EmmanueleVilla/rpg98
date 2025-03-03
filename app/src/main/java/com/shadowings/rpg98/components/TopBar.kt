@@ -31,7 +31,7 @@ fun TopBarPreview() {
 }
 
 @Composable
-fun TopBar(modifier: Modifier = Modifier) {
+fun TopBar(modifier: Modifier = Modifier, title: String = "") {
     val fontFamily =
         FontFamily(
             Font(
@@ -55,7 +55,7 @@ fun TopBar(modifier: Modifier = Modifier) {
             )
     ) {
         Text(
-            text = "BitWar-98",
+            text = title,
             fontFamily = fontFamily,
             color = Color.White,
             fontSize = 32.sp,

@@ -64,7 +64,8 @@ fun IconMenu(
     modifier: Modifier = Modifier,
     text: String,
     image: Int,
-    pressed: Boolean = false
+    pressed: Boolean = false,
+    onClick: () -> Unit = {}
 ) {
     val pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
     val isPressed = remember { mutableStateOf(pressed) }
@@ -87,6 +88,7 @@ fun IconMenu(
                 },
                 onTap = {
                     isPressed.value = false
+                    onClick.invoke()
                 }
             )
         },
