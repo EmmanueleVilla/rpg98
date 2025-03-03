@@ -121,110 +121,220 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                     end = Offset(size.width - sizePx * 2, baseY + sizePx),
                     strokeWidth = sizePx,
                 )
+
+                data class Tab(
+                    val startX: Float,
+                    val endX: Float,
+                    val startY: Float,
+                    val drawBeginning: Boolean = true,
+                )
+
+                val bases = when (selectedIndex.intValue) {
+                    0 -> {
+                        listOf(
+                            Tab(
+                                startX = 0f - sizePx * 3,
+                                endX = tabSizes[0].toPx() + sizePx * 3,
+                                startY = sizePx * 2
+                            ),
+                            Tab(
+                                startX = tabSizes[0].toPx(),
+                                endX = tabSizes[0].toPx() + tabSizes[1].toPx(),
+                                startY = sizePx * 5,
+                                drawBeginning = false
+                            ),
+                            Tab(
+                                startX = tabSizes[0].toPx() + tabSizes[1].toPx(),
+                                endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx(),
+                                startY = sizePx * 5
+                            )
+                        )
+                    }
+
+                    else -> {
+                        listOf(
+                            Tab(
+                                startX = 0f,
+                                endX = tabSizes[0].toPx(),
+                                startY = sizePx * 5
+                            ),
+                            Tab(
+                                startX = tabSizes[0].toPx(),
+                                endX = tabSizes[0].toPx() + tabSizes[1].toPx(),
+                                startY = sizePx * 5
+                            ),
+                            Tab(
+                                startX = tabSizes[0].toPx() + tabSizes[1].toPx(),
+                                endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx(),
+                                startY = sizePx * 5
+                            )
+                        )
+                    }
+                }
+
+                bases.forEach {
+                    val baseLine = it.startX
+                    val nextSize = it.endX
+                    val startY = it.startY
+                    val begin = it.drawBeginning
+
+                    if (begin) {
+                        drawLine(
+                            cap = StrokeCap.Square,
+                            color = Color.White,
+                            start = Offset(
+                                baseLine + sizePx * 3,
+                                startY
+                            ),
+                            end = Offset(
+                                baseLine + sizePx * 3,
+                                32.dp.toPx() - sizePx
+                            ),
+                            strokeWidth = sizePx,
+                        )
+                        drawLine(
+                            cap = StrokeCap.Square,
+                            color = lightGray,
+                            start = Offset(
+                                baseLine + sizePx * 4,
+                                startY
+                            ),
+                            end = Offset(
+                                baseLine + sizePx * 4,
+                                32.dp.toPx() - sizePx
+                            ),
+                            strokeWidth = sizePx,
+                        )
+                        drawLine(
+                            cap = StrokeCap.Square,
+                            color = Color.White,
+                            start = Offset(
+                                baseLine + sizePx * 4,
+                                startY - sizePx
+                            ),
+                            end = Offset(
+                                baseLine + sizePx * 4,
+                                startY - sizePx
+                            ),
+                            strokeWidth = sizePx,
+                        )
+                        drawLine(
+                            cap = StrokeCap.Square,
+                            color = lightGray,
+                            start = Offset(
+                                baseLine + sizePx * 5,
+                                startY - sizePx
+                            ),
+                            end = Offset(
+                                baseLine + sizePx * 5,
+                                startY - sizePx
+                            ),
+                            strokeWidth = sizePx,
+                        )
+                    }
+
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.White,
+                        start = Offset(
+                            baseLine + sizePx * 5 + (if (begin) 0f else sizePx),
+                            startY - sizePx * 2
+                        ),
+                        end = Offset(
+                            nextSize,
+                            startY - sizePx * 2
+                        ),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = lightGray,
+                        start = Offset(
+                            baseLine + sizePx * 5 + sizePx,
+                            startY - sizePx
+                        ),
+                        end = Offset(
+                            nextSize,
+                            startY - sizePx
+                        ),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = darkGray,
+                        start = Offset(
+                            nextSize + sizePx,
+                            startY
+                        ),
+                        end = Offset(
+                            nextSize + sizePx,
+                            32.dp.toPx() - sizePx
+                        ),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.Black,
+                        start = Offset(
+                            nextSize + sizePx,
+                            startY - sizePx
+                        ),
+                        end = Offset(
+                            nextSize + sizePx,
+                            startY - sizePx
+                        ),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.Black,
+                        start = Offset(
+                            nextSize + sizePx * 2,
+                            startY
+                        ),
+                        end = Offset(
+                            nextSize + sizePx * 2,
+                            32.dp.toPx() - sizePx
+                        ),
+                        strokeWidth = sizePx,
+                    )
+                }
+
+
                 if (selectedIndex.intValue == 0) {
                     drawLine(
                         cap = StrokeCap.Square,
-                        color = Color.White,
-                        start = Offset(0f, sizePx * 3),
-                        end = Offset(0f, size.height),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.White,
-                        start = Offset(sizePx * 3, 0f),
-                        end = Offset(tabSizes[0].toPx() - sizePx * 3, 0f),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.Black,
-                        start = Offset(tabSizes[0].toPx(), sizePx * 3),
-                        end = Offset(tabSizes[0].toPx(), 32.dp.toPx() + sizePx),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
                         color = lightGray,
-                        start = Offset(sizePx, sizePx * 2),
-                        end = Offset(sizePx, 32.dp.toPx()),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = lightGray,
-                        start = Offset(sizePx * 2, sizePx),
-                        end = Offset(tabSizes[0].toPx() - sizePx * 3, sizePx),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = darkGray,
-                        start = Offset(tabSizes[0].toPx() - sizePx, sizePx * 3),
-                        end = Offset(tabSizes[0].toPx() - sizePx, 32.dp.toPx() + sizePx),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.White,
-                        start = Offset(sizePx, sizePx * 2),
-                        end = Offset(sizePx, sizePx * 2),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.White,
-                        start = Offset(sizePx * 2, sizePx),
-                        end = Offset(sizePx * 2, sizePx),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = lightGray,
-                        start = Offset(sizePx * 2, sizePx * 2),
-                        end = Offset(sizePx * 2, sizePx * 2),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = darkGray,
-                        start = Offset(tabSizes[0].toPx() - sizePx * 2, sizePx * 2),
-                        end = Offset(tabSizes[0].toPx() - sizePx * 2, sizePx * 2),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.Black,
-                        start = Offset(tabSizes[0].toPx() - sizePx, sizePx * 2),
-                        end = Offset(tabSizes[0].toPx() - sizePx, sizePx * 2),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.Black,
-                        start = Offset(tabSizes[0].toPx() - sizePx * 2, sizePx),
-                        end = Offset(tabSizes[0].toPx() - sizePx * 2, sizePx),
+                        start = Offset(sizePx * 1, 32.dp.toPx()),
+                        end = Offset(sizePx * 1, 32.dp.toPx()),
                         strokeWidth = sizePx,
                     )
                     drawLine(
                         cap = StrokeCap.Square,
                         color = Color(0xFFBFBFBF),
                         start = Offset(sizePx * 2, 32.dp.toPx()),
-                        end = Offset(tabSizes[0].toPx() - sizePx * 2, 32.dp.toPx()),
+                        end = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx()),
                         strokeWidth = sizePx,
                     )
                     drawLine(
                         cap = StrokeCap.Square,
                         color = Color(0xFFBFBFBF),
                         start = Offset(sizePx * 2, 32.dp.toPx() + sizePx),
-                        end = Offset(tabSizes[0].toPx() - sizePx * 2, 32.dp.toPx() + sizePx),
+                        end = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx() + sizePx),
                         strokeWidth = sizePx,
                     )
                     drawLine(
                         cap = StrokeCap.Square,
-                        color = Color.White,
-                        start = Offset(tabSizes[0].toPx() + sizePx, sizePx * 3),
-                        end = Offset(tabSizes[0].toPx() + tabSizes[1].toPx(), sizePx * 3),
+                        color = Color.Black,
+                        start = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx()),
+                        end = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx() + sizePx),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = darkGray,
+                        start = Offset(tabSizes[0].toPx() + sizePx * 4, 32.dp.toPx()),
+                        end = Offset(tabSizes[0].toPx() + sizePx * 4, 32.dp.toPx() + sizePx),
                         strokeWidth = sizePx,
                     )
                 }
@@ -242,7 +352,7 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                         .height(32.dp)
                         .padding(horizontal = 12.dp)
                         .padding(vertical = 4.dp)
-                        .padding(top = if (selectedIndex.intValue == index) 0.dp else 4.dp),
+                        .padding(top = if (selectedIndex.intValue == index) 0.dp else 5.dp),
                     fontFamily = fontFamily
                 )
             }
