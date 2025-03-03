@@ -352,6 +352,7 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                         .height(32.dp)
                         .padding(horizontal = 12.dp)
                         .padding(vertical = 4.dp)
+                        .padding(start = 8.dp)
                         .padding(top = if (selectedIndex.intValue == index) 0.dp else 5.dp),
                     fontFamily = fontFamily
                 )
