@@ -37,7 +37,8 @@ fun TabWindowPreview() {
             Spacer(Modifier.height(16.dp))
             TabWindow(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .height(50.dp),
             )
         }
     }
@@ -68,13 +69,6 @@ fun TabWindow(
                     )
                     drawLine(
                         cap = StrokeCap.Square,
-                        color = Color.White,
-                        start = Offset(0f, 0f),
-                        end = Offset(size.width - sizePx, 0f),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
                         color = Color.Black,
                         start = Offset(size.width, 0f),
                         end = Offset(size.width, size.height),
@@ -90,21 +84,14 @@ fun TabWindow(
                     drawLine(
                         cap = StrokeCap.Square,
                         color = lightGray,
-                        start = Offset(sizePx, sizePx),
+                        start = Offset(sizePx, 0f),
                         end = Offset(sizePx, size.height - sizePx),
                         strokeWidth = sizePx,
                     )
                     drawLine(
                         cap = StrokeCap.Square,
-                        color = lightGray,
-                        start = Offset(sizePx, sizePx),
-                        end = Offset(size.width - sizePx, sizePx),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
                         color = darkGray,
-                        start = Offset(size.width - sizePx, sizePx),
+                        start = Offset(size.width - sizePx, 0f),
                         end = Offset(size.width - sizePx, size.height - sizePx),
                         strokeWidth = sizePx,
                     )

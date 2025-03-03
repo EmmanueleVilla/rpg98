@@ -43,7 +43,7 @@ fun RpgTabPreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFBFBFBF))
+                .background(Color.Red)
                 .padding(16.dp),
         ) {
             RpgTab(
@@ -57,7 +57,7 @@ fun RpgTabPreview() {
                 modifier = Modifier
                     .width(100.dp),
                 selectedIndex = selectedIndex,
-                index = 0
+                index = 1
             )
         }
     }
@@ -107,14 +107,17 @@ fun RpgTab(
                     }
                 )
             }
-            .background(
-                color = Color.Transparent
-            )
             .padding(paddingValues)
     ) {
         Box(
             modifier = modifier
-                .background(color = Color(0xFFBFBFBF))
+                .background(
+                    color = if (selectedIndex.intValue == index) {
+                        Color(0xFFBFBFBF)
+                    } else {
+                        Color.Transparent
+                    }
+                )
                 .drawWithContent {
                     drawContent()
                     drawLine(
@@ -201,39 +204,7 @@ fun RpgTab(
                         end = Offset(size.width - sizePx * 2, sizePx),
                         strokeWidth = sizePx,
                     )
-                    if (selectedIndex.intValue != index) {
-                        drawLine(
-                            cap = StrokeCap.Square,
-                            color = lightGray,
-                            start = Offset(sizePx, size.height - sizePx),
-                            end = Offset(size.width - sizePx * 2, size.height - sizePx),
-                            strokeWidth = sizePx,
-                        )
-                        drawLine(
-                            cap = StrokeCap.Square,
-                            color = Color.White,
-                            start = Offset(0f, size.height),
-                            end = Offset(size.width - sizePx, size.height),
-                            strokeWidth = sizePx,
-                        )
-                    } else {
-                        drawLine(
-                            cap = StrokeCap.Square,
-                            color = Color(0xFFBFBFBF),
-                            start = Offset(sizePx, size.height - sizePx),
-                            end = Offset(size.width - sizePx * 2, size.height - sizePx),
-                            strokeWidth = sizePx,
-                        )
-                        drawLine(
-                            cap = StrokeCap.Square,
-                            color = Color(0xFFBFBFBF),
-                            start = Offset(0f, size.height),
-                            end = Offset(size.width - sizePx, size.height),
-                            strokeWidth = sizePx,
-                        )
-                    }
                 }
-
         )
         {
             Text(
