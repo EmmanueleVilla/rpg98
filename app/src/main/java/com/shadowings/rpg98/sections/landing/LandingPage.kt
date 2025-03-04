@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,7 +44,7 @@ import com.shadowings.rpg98.components.size
 import com.shadowings.rpg98.utils.PreviewContainer
 import org.koin.androidx.compose.koinViewModel
 
-@Preview
+@Preview(device = Devices.PIXEL_4A)
 @Composable
 fun LandingPagePreview() {
     PreviewContainer {
@@ -106,7 +107,7 @@ fun LandingPage(
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = "IdleProcess",
-                                style = MaterialTheme.typography.bodyLarge,
+                                style = MaterialTheme.typography.headlineSmall,
                                 textAlign = TextAlign.Center,
                                 fontFamily = fontFamily,
                                 color = Color.Black,
@@ -136,8 +137,8 @@ fun LandingPage(
                             )
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
-                                text = "120 Exp Rimanente",
-                                style = MaterialTheme.typography.bodyLarge,
+                                text = "120 Bit Rimanenti",
+                                style = MaterialTheme.typography.headlineSmall,
                                 textAlign = TextAlign.Left,
                                 fontFamily = fontFamily,
                                 color = Color.Black,
@@ -199,16 +200,21 @@ fun LandingPage(
                         horizontalArrangement = Arrangement.SpaceAround
                     ) {
                         IconMenu(
-                            modifier = Modifier.fillMaxWidth(0.5f),
+                            modifier = Modifier.weight(1f),
                             text = "Sistema",
                             image = R.drawable.menu_system
                         ) {
                             navController.navigate("system")
                         }
                         IconMenu(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.weight(1f),
                             text = "Risorse",
                             image = R.drawable.menu_resources
+                        )
+                        IconMenu(
+                            modifier = Modifier.weight(1f),
+                            text = "Network",
+                            image = R.drawable.menu_globe
                         )
                     }
                     Row(
@@ -217,12 +223,17 @@ fun LandingPage(
                         horizontalArrangement = Arrangement.SpaceAround
                     ) {
                         IconMenu(
-                            modifier = Modifier.fillMaxWidth(0.5f),
+                            modifier = Modifier.weight(1f),
+                            text = "Cerca",
+                            image = R.drawable.menu_search
+                        )
+                        IconMenu(
+                            modifier = Modifier.weight(1f),
                             text = "Scansione",
                             image = R.drawable.menu_scan
                         )
                         IconMenu(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.weight(1f),
                             text = "Cronologia",
                             image = R.drawable.menu_history
                         )
