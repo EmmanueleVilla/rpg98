@@ -107,20 +107,23 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                     end = Offset(size.width - sizePx, size.height - sizePx),
                     strokeWidth = sizePx,
                 )
-                drawLine(
-                    cap = StrokeCap.Square,
-                    color = Color.White,
-                    start = Offset(0f, baseY),
-                    end = Offset(size.width - sizePx, baseY),
-                    strokeWidth = sizePx,
-                )
-                drawLine(
-                    cap = StrokeCap.Square,
-                    color = lightGray,
-                    start = Offset(sizePx, baseY + sizePx),
-                    end = Offset(size.width - sizePx * 2, baseY + sizePx),
-                    strokeWidth = sizePx,
-                )
+                if (selectedIndex.intValue == 0) {
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = Color.White,
+                        start = Offset(tabSizes[0].toPx() + sizePx * 5, baseY),
+                        end = Offset(size.width - sizePx, baseY),
+                        strokeWidth = sizePx,
+                    )
+                    drawLine(
+                        cap = StrokeCap.Square,
+                        color = lightGray,
+                        start = Offset(tabSizes[0].toPx() + sizePx * 5, baseY + sizePx),
+                        end = Offset(size.width - sizePx * 2, baseY + sizePx),
+                        strokeWidth = sizePx,
+                    )
+                }
+
 
                 data class Tab(
                     val startX: Float,
@@ -300,29 +303,7 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                     )
                 }
 
-
                 if (selectedIndex.intValue == 0) {
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = lightGray,
-                        start = Offset(sizePx * 1, 32.dp.toPx()),
-                        end = Offset(sizePx * 1, 32.dp.toPx()),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color(0xFFBFBFBF),
-                        start = Offset(sizePx * 2, 32.dp.toPx()),
-                        end = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx()),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color(0xFFBFBFBF),
-                        start = Offset(sizePx * 2, 32.dp.toPx() + sizePx),
-                        end = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx() + sizePx),
-                        strokeWidth = sizePx,
-                    )
                     drawLine(
                         cap = StrokeCap.Square,
                         color = Color.Black,
