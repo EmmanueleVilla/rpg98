@@ -204,30 +204,19 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                 )
 
                 val sel = selectedIndex.intValue
-                val bases =
-                    listOf(
-                        Tab(
-                            startX = 0f - if (sel == 0) sizePx * 3 else 0f,
-                            endX = tabSizes[0].toPx() + if (sel == 0) sizePx * 3 else 0f,
-                            startY = sizePx * if (sel == 0) 2 else 5,
-                            drawEnd = sel != 1
-                        ),
-                        Tab(
-                            startX = tabSizes[0].toPx() - if (sel == 1) sizePx * 3 else 0f,
-                            endX = tabSizes[0].toPx() + tabSizes[1].toPx() + if (sel == 1) sizePx * 3 else 0f,
-                            startY = sizePx * if (sel == 1) 2 else 5,
-                            drawBeginning = sel != 0,
-                            drawEnd = sel != 2
-                        ),
-                        Tab(
-                            startX = tabSizes[0].toPx() + tabSizes[1].toPx() - if (sel == 2) sizePx * 3 else 0f,
-                            endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx() + if (sel == 2) sizePx * 3 else 0f,
-                            startY = sizePx * if (sel == 2) 2 else 5,
-                            drawBeginning = sel != 1,
-                            drawEnd = sel != 3
-                        )
 
+                val bases = List(tabSizes.size) { index ->
+                    Tab(
+                        startX = tabSizes.subList(0, index)
+                            .map { it.toPx() }.sum() - if (sel == index) sizePx * 3 else 0f,
+                        endX = tabSizes.subList(0, (index + 1))
+                            .map { it.toPx() }.sum() + if (sel == index) sizePx * 3 else 0f,
+                        startY = sizePx * if (sel == index) 2 else 5,
+                        drawEnd = sel != (index + 1),
+                        drawBeginning = sel != (index - 1)
                     )
+                }
+
                 bases.forEach {
                     val baseLine = it.startX
                     val nextSize = it.endX
