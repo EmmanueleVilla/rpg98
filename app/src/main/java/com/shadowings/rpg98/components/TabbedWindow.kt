@@ -348,104 +348,40 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                     }
                 }
 
-                if (selectedIndex.intValue == 0) {
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.Black,
-                        start = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx()),
-                        end = Offset(tabSizes[0].toPx() + sizePx * 5, 32.dp.toPx() + sizePx),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = darkGray,
-                        start = Offset(tabSizes[0].toPx() + sizePx * 4, 32.dp.toPx()),
-                        end = Offset(tabSizes[0].toPx() + sizePx * 4, 32.dp.toPx() + sizePx),
-                        strokeWidth = sizePx,
-                    )
-                }
-                if (selectedIndex.intValue == 1) {
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.Black,
-                        start = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + sizePx * 5,
-                            32.dp.toPx()
-                        ),
-                        end = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + sizePx * 5,
-                            32.dp.toPx() + sizePx
-                        ),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = darkGray,
-                        start = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + sizePx * 4,
-                            32.dp.toPx()
-                        ),
-                        end = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + sizePx * 4,
-                            32.dp.toPx() + sizePx
-                        ),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = lightGray,
-                        start = Offset(
-                            tabSizes[0].toPx() + sizePx,
-                            32.dp.toPx()
-                        ),
-                        end = Offset(
-                            tabSizes[0].toPx() + sizePx,
-                            32.dp.toPx() + sizePx
-                        ),
-                        strokeWidth = sizePx,
-                    )
-                }
-                if (selectedIndex.intValue == 2) {
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = Color.Black,
-                        start = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx() + sizePx * 5,
-                            32.dp.toPx()
-                        ),
-                        end = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx() + sizePx * 5,
-                            32.dp.toPx() + sizePx
-                        ),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = darkGray,
-                        start = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx() + sizePx * 4,
-                            32.dp.toPx()
-                        ),
-                        end = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx() + sizePx * 4,
-                            32.dp.toPx() + sizePx
-                        ),
-                        strokeWidth = sizePx,
-                    )
-                    drawLine(
-                        cap = StrokeCap.Square,
-                        color = lightGray,
-                        start = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + sizePx,
-                            32.dp.toPx()
-                        ),
-                        end = Offset(
-                            tabSizes[0].toPx() + tabSizes[1].toPx() + sizePx,
-                            32.dp.toPx() + sizePx
-                        ),
-                        strokeWidth = sizePx,
-                    )
-                }
+                val addEndPointX =
+                    tabSizes.subList(0, selectedIndex.intValue + 1).map { it.toPx() }
+                        .sum() + sizePx * 4
+                val addStartPointX =
+                    tabSizes.subList(0, selectedIndex.intValue).map { it.toPx() }
+                        .sum() + sizePx
+
+                drawLine(
+                    cap = StrokeCap.Square,
+                    color = Color.Black,
+                    start = Offset(addEndPointX + sizePx, 32.dp.toPx()),
+                    end = Offset(addEndPointX + sizePx, 32.dp.toPx() + sizePx),
+                    strokeWidth = sizePx,
+                )
+                drawLine(
+                    cap = StrokeCap.Square,
+                    color = darkGray,
+                    start = Offset(addEndPointX, 32.dp.toPx()),
+                    end = Offset(addEndPointX, 32.dp.toPx() + sizePx),
+                    strokeWidth = sizePx,
+                )
+                drawLine(
+                    cap = StrokeCap.Square,
+                    color = lightGray,
+                    start = Offset(
+                        addStartPointX,
+                        32.dp.toPx()
+                    ),
+                    end = Offset(
+                        addStartPointX,
+                        32.dp.toPx() + sizePx
+                    ),
+                    strokeWidth = sizePx,
+                )
             }
     ) {
         Row {
