@@ -203,93 +203,31 @@ fun TabbedWindow(tabSizes: List<Dp>, titles: List<String>, selectedIndex: Mutabl
                     val drawEnd: Boolean = true
                 )
 
-                val bases = when (selectedIndex.intValue) {
-                    0 -> {
-                        listOf(
-                            Tab(
-                                startX = 0f - sizePx * 3,
-                                endX = tabSizes[0].toPx() + sizePx * 3,
-                                startY = sizePx * 2,
-                            ),
-                            Tab(
-                                startX = tabSizes[0].toPx(),
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx(),
-                                startY = sizePx * 5,
-                                drawBeginning = false
-                            ),
-                            Tab(
-                                startX = tabSizes[0].toPx() + tabSizes[1].toPx(),
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx(),
-                                startY = sizePx * 5
-                            )
+                val sel = selectedIndex.intValue
+                val bases =
+                    listOf(
+                        Tab(
+                            startX = 0f - if (sel == 0) sizePx * 3 else 0f,
+                            endX = tabSizes[0].toPx() + if (sel == 0) sizePx * 3 else 0f,
+                            startY = sizePx * if (sel == 0) 2 else 5,
+                            drawEnd = sel != 1
+                        ),
+                        Tab(
+                            startX = tabSizes[0].toPx() - if (sel == 1) sizePx * 3 else 0f,
+                            endX = tabSizes[0].toPx() + tabSizes[1].toPx() + if (sel == 1) sizePx * 3 else 0f,
+                            startY = sizePx * if (sel == 1) 2 else 5,
+                            drawBeginning = sel != 0,
+                            drawEnd = sel != 2
+                        ),
+                        Tab(
+                            startX = tabSizes[0].toPx() + tabSizes[1].toPx() - if (sel == 2) sizePx * 3 else 0f,
+                            endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx() + if (sel == 2) sizePx * 3 else 0f,
+                            startY = sizePx * if (sel == 2) 2 else 5,
+                            drawBeginning = sel != 1,
+                            drawEnd = sel != 3
                         )
-                    }
 
-                    1 -> {
-                        listOf(
-                            Tab(
-                                startX = 0f,
-                                endX = tabSizes[0].toPx(),
-                                startY = sizePx * 5,
-                                drawEnd = false
-                            ),
-                            Tab(
-                                startX = tabSizes[0].toPx() - sizePx * 3,
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx() + sizePx * 3,
-                                startY = sizePx * 2
-                            ),
-                            Tab(
-                                startX = tabSizes[0].toPx() + tabSizes[1].toPx(),
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx(),
-                                startY = sizePx * 5,
-                                drawBeginning = false
-                            )
-                        )
-                    }
-
-                    2 -> {
-                        listOf(
-                            Tab(
-                                startX = 0f,
-                                endX = tabSizes[0].toPx(),
-                                startY = sizePx * 5,
-
-                                ),
-                            Tab(
-                                startX = tabSizes[0].toPx(),
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx(),
-                                startY = sizePx * 5,
-                                drawEnd = false
-                            ),
-                            Tab(
-                                startX = tabSizes[0].toPx() + tabSizes[1].toPx() - sizePx * 3,
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx() + sizePx * 3,
-                                startY = sizePx * 2
-                            )
-                        )
-                    }
-
-                    else -> {
-                        listOf(
-                            Tab(
-                                startX = 0f,
-                                endX = tabSizes[0].toPx(),
-                                startY = sizePx * 5
-                            ),
-                            Tab(
-                                startX = tabSizes[0].toPx(),
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx(),
-                                startY = sizePx * 5
-                            ),
-                            Tab(
-                                startX = tabSizes[0].toPx() + tabSizes[1].toPx(),
-                                endX = tabSizes[0].toPx() + tabSizes[1].toPx() + tabSizes[2].toPx(),
-                                startY = sizePx * 5
-                            )
-                        )
-                    }
-                }
-
+                    )
                 bases.forEach {
                     val baseLine = it.startX
                     val nextSize = it.endX
